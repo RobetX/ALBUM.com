@@ -3,84 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website album</title>
+    <title>JUJUR AJA</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
-            background: url('https://h.top4top.io/p_3320crxps0.jpg') no-repeat center center fixed;
+            text-align: center;
+            background: url('https://l.top4top.io/p_33537nc5f0.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
+        .content {
+            margin-top: 50px;
+        }
+        img {
+            width: 250px;
             border-radius: 10px;
         }
-        .item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        .buttons {
+            margin-top: 20px;
+            position: relative;
         }
-        .item img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        .text {
+        button {
+            padding: 10px 20px;
             font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
         }
-        audio {
-            display: none;
-        }
+        .btn-like { background-color: green; color: white; }
+        .btn-dislike { background-color: red; color: white; position: absolute; }
+        .btn-share { background-color: blue; color: white; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="item">
-            <img src="https://i.top4top.io/p_3321vsbf10.jpg" alt="">
-            <div class="text">hubungan yang awet itu bukan. yang selalu ada</div>
-        </div>
-        <div class="item">
-            <img src="https://c.top4top.io/p_3321ov3vk0.jpg" alt="Foto 2">
-            <div class="text"> tapi pasangan yang selalu memafkn</div>
-        </div>
-        <div class="item">
-            <img src="https://l.top4top.io/p_33215ok090.jpg" alt="Foto 3">
-            <div class="text">dan mau belajar dari keselahan</div>
-        </div>
-        <div class="item">
-            <img src="https://c.top4top.io/p_3321tro5x0.jpg" alt="Foto 4">
-            <div class="text">dan tidak mementingkan ego sendiri</div>
-        </div>
-        <div class="item">
-            <img src="https://j.top4top.io/p_3321f36490.jpg" alt="Foto 5">
-            <div class="text">kalau mau langgeng harus sering ke oyo</div>
-        </div>
+
+<div class="content" id="step1">
+    <img src="https://g.top4top.io/p_3354h61eu1.png" alt="Poto 1">
+    <h2>Kamu suka aku ga?</h2>
+    <div class="buttons">
+        <button class="btn-like" onclick="nextStep(2)">Suka</button>
+        <button class="btn-dislike" id="btnNo" onmouseover="moveButton()">Tidak</button>
     </div>
+</div>
 
-    <audio id="background-music" autoplay loop>
-        <source src="https://c.top4top.io/m_33212hlvr0.mp4">
-        Browser Anda tidak mendukung tag audio.
-    </audio>
+<div class="content" id="step2" style="display: none;">
+    <img src="https://a.top4top.io/p_3354gen7o1.png" alt="Poto 2">
+    <h2>Kamu tulus ga sama aku?</h2>
+    <div class="buttons">
+        <button class="btn-like" onclick="nextStep(3)">Tulus</button>
+        <button class="btn-dislike" id="btnNo2" onmouseover="moveButton2()">Tidak</button>
+    </div>
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var audio = document.getElementById("background-music");
-            audio.play().catch(error => console.log("Autoplay diblokir, interaksi pengguna diperlukan."));
-        });
-    </script>
+<div class="content" id="step3" style="display: none;">
+    <img src="https://e.top4top.io/p_33546phzk4.png" alt="Poto 3">
+    <h2>Terima kasih! Tolong bagikan ke orang tersayang kamu.</h2>
+    <button class="btn-share" onclick="shareWhatsApp()">Bagikan</button>
+</div>
+
+<script>
+    function nextStep(step) {
+        document.getElementById('step' + (step - 1)).style.display = 'none';
+        document.getElementById('step' + step).style.display = 'block';
+    }
+
+    function shareWhatsApp() {
+        var phoneNumber = "6283133662280";  // Ganti dengan nomor WhatsApp kamu
+        var message = "LOVE YOU TO SAYANG ❤️";
+        var url = "https://wa.me/6283133662280?text=" + encodeURIComponent(message);
+        window.location.href = url;
+    }
+
+    function moveButton() {
+        var button = document.getElementById("btnNo");
+        var x = Math.random() * (window.innerWidth - 100);
+        var y = Math.random() * (window.innerHeight - 50);
+        button.style.left = x + "px";
+        button.style.top = y + "px";
+    }
+
+    function moveButton2() {
+        var button = document.getElementById("btnNo2");
+        var x = Math.random() * (window.innerWidth - 100);
+        var y = Math.random() * (window.innerHeight - 50);
+        button.style.left = x + "px";
+        button.style.top = y + "px";
+    }
+</script>
+
 </body>
 </html>
